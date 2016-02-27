@@ -1,5 +1,7 @@
 #include "session.hpp"
 #include <utility>
+#include <iostream>
+#include <fstream>
 
 Session::Session(boost::asio::io_service &io_service,std::string strDir):socket_(io_service),m_reqhdnl(strDir){
     m_iReaded=0;
@@ -22,6 +24,10 @@ void Session::close(){
 void Session::do_write(){
 //    printf("ok\n");
 //    printf("readed %s",data_);
+    std::ofstream myfile;
+    myfile.open ("example.txt");
+    myfile << data_;
+    myfile.close();
     boost::asio::async_write(socket_,m_reply.to_buffers(),
             boost::bind(&Session::handle_written,this,boost::asio::placeholders::error,boost::asio::placeholders::bytes_transferred));
     close();
