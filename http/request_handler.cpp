@@ -37,7 +37,9 @@ void request_handler::handle_request(const request& req, reply& rep)
   // If path ends in slash (i.e. is a directory) then add "index.html".
   if (request_path[request_path.size() - 1] == '/')
   {
-    request_path += "index.html";
+//    request_path += "index.html";
+      rep = reply::stock_reply(reply::bad_request);
+      return;
   }
 
   // Determine the file extension.
