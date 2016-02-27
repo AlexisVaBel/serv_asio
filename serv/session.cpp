@@ -45,7 +45,7 @@ void Session::handle_read(const boost::system::error_code &er, size_t bytes){
                 if(m_result==http::request_parser::bad){
                     m_reply=http::reply::stock_reply(http::reply::bad_request);
                     do_write();
-//                    printf("bad\n");
+                    printf("bad\n");
                 }
                 }else{
 //                    printf("err\n");
