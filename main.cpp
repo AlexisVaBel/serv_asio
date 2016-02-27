@@ -50,10 +50,10 @@ int main(int argc, char **argv){
     }
     while(opt!=-1);
     //~work with args
-//    if(fork()==0){
+    if(fork()==0){
 	    boost::asio::io_service io_service;
 	    Server* serv=new Server(globalArgs.host,globalArgs.port,globalArgs.dir,io_service);
 	    io_service.run();
-//    }
+    }
     return 0;
 }
